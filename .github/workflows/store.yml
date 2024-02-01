@@ -22,7 +22,10 @@ jobs:
 
       - name: Gradle cache
         uses: gradle/gradle-build-action@v2
-
+        
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+        
       - name: test
         run: |
           # Create screenshots
