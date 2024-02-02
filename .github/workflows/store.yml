@@ -25,16 +25,10 @@ jobs:
         
       - name: Make Gradle executable
         run: chmod +x ./gradlew
-        
-      - name: Run all local screenshot tests (Roborazzi)
-        id: screenshotsverify
-        continue-on-error: true
-        run: ./gradlew verifyRoborazziDemoDebug
 
-      # Runs if previous job failed
       - name: Generate new screenshots if verification failed and it's a PR
         id: screenshotsrecord
-        if: steps.screenshotsverify.outcome == 'failure' && github.event_name == 'pull_request'
+        if:  github.event_name == 'pull_request'
         run: |
           ./gradlew recordRoborazziDemoDebug
 
