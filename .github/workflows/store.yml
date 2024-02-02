@@ -26,11 +26,16 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Run all local screenshot tests (Roborazzi)
+        id: screenshotsverify
+        continue-on-error: true
+        run: ./gradlew verifyRoborazziDebug
+
       - name: Generate new screenshots if verification failed and it's a PR
         id: screenshotsrecord
-        if:  github.event_name == 'pull_request'
+        if: steps.screenshotsverify.outcome == 'failure' && github.event_name == 'pull_request'
         run: |
-          ./gradlew recordRoborazziDemoDebug
+          ./gradlew recordRoborazziDebug
 
       - name: Push new screenshots if available
         uses: stefanzweifel/git-auto-commit-action@v5
