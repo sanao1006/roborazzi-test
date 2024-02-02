@@ -3,8 +3,7 @@ package app.sanao1006.roborazziTest
 import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.core.app.ActivityScenario
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.matcher.ViewMatchers
+import app.sanao1006.roborazziTest.ui.theme.RoborazzitestTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
@@ -31,8 +30,11 @@ class ExampleUnitTest {
     fun captureRoboImageSample() {
         ActivityScenario.launch(MainActivity::class.java)
 
-        onView(ViewMatchers.isRoot())
-            .captureRoboImage()
+        composeTestRule.setContent {
+            RoborazzitestTheme {
+                Greeting("Android")
+            }
+        }
 
         composeTestRule.onNode(isRoot())
             .captureRoboImage("build/compose.png")
