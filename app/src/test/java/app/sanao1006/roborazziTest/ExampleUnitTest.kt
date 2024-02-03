@@ -36,7 +36,7 @@ class ExampleUnitTest {
 
         composeTestRule
             .onNode(
-                hasText("Hello Android"),
+                hasText("Hello Android!"),
                 useUnmergedTree = true
             )
             .assertExists()
