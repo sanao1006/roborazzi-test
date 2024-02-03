@@ -1,13 +1,8 @@
 package app.sanao1006.roborazziTest
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onRoot
 import androidx.test.core.app.ActivityScenario
-import app.sanao1006.roborazziTest.ui.theme.RoborazzitestTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
@@ -35,7 +30,7 @@ class ExampleUnitTest {
         ActivityScenario.launch(MainActivity::class.java)
 
 
-        composeTestRule.onNode(isRoot())
+        composeTestRule.onRoot()
             .captureRoboImage("build/compose.png")
     }
 }
