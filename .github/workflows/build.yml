@@ -35,7 +35,7 @@ jobs:
         uses: mikepenz/action-junit-report@v2
         if: steps.screenshotsverify.outcome == 'failure' 
         with:
-         report_paths: '**/build/reports/tests/testDebugUnitTest/index.html'
+         report_paths: '**/build/test-results/*/TEST-*.xml'
 
       - name: Generate new screenshots if verification failed and it's a PR
         id: screenshotsrecord
