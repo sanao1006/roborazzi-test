@@ -31,7 +31,7 @@ class ExampleUnitTest {
         ActivityScenario.launch(MainActivity::class.java)
 
 
-        composeTestRule.onAllNodes(isRoot())[1]
+        composeTestRule.onRoot(useUnmergedTree = true)
             .captureRoboImage("build/compose.png")
     }
 }
