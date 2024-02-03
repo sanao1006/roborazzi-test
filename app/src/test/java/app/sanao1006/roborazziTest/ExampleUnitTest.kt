@@ -65,7 +65,7 @@ class ExampleUnitTest {
         }
 
         composeTestRule.onNode(hasText("Hello Android!"))
-            .captureRoboImage(outputPath("test"))
+            .captureRoboImage()
     }
 
 
