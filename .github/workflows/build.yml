@@ -31,6 +31,12 @@ jobs:
         continue-on-error: true
         run: ./gradlew verifyRoborazziDebug
 
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: steps.screenshotsverify.outcome == 'failure' 
+        with:
+         report_paths: '**/build/reports/tests/testDebugUnitTest/index.html'
+
       - name: Generate new screenshots if verification failed and it's a PR
         id: screenshotsrecord
         if: steps.screenshotsverify.outcome == 'failure' && github.event_name == 'pull_request'
