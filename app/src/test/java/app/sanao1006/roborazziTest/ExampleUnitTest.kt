@@ -4,6 +4,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.ExperimentalTestApi
 import androidx.compose.ui.test.hasText
@@ -55,19 +56,18 @@ class ExampleUnitTest {
     fun captureRoboImageSample() {
         composeTestRule.setContent {
             RoborazzitestTheme {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface{
                     Greeting("Android")
                 }
             }
         }
 
-        composeTestRule.onNode(hasText("Hello Android!"))
-            .captureRoboImage()
+        composeTestRule.onRoot()
+            .captureRoboImage(
+                filePath = outputPath("test"),
+                roborazziOptions = RoborazziOptions(compareOptions = RoborazziOptions.CompareOptions(changeThreshold = 0f))
+            )
     }
-
 
     private fun outputPath(name: String) = "$DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH/$name.png"
 }
