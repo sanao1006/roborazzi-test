@@ -47,9 +47,6 @@ class ExampleUnitTest {
 
     @Test
     fun captureRoboImageSample() {
-        ActivityScenario.launch(MainActivity::class.java)
-
-
         composeTestRule.onNode(hasText("Hello Android!"))
             .captureRoboImage()
     }
