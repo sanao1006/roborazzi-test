@@ -47,6 +47,14 @@ jobs:
         run: |
           ./gradlew recordRoborazziDebug
 
+      - name: compare screenshot test
+        id: compare-screenshot-test
+        if: steps.screenshotsverify.outcome == 'failure' && github.event_name == 'pull_request'
+        run: |
+          ./gradlew compareRoborazziDebug --stacktrace
+
+      - name: Generate new screenshots if verification failed and it's a PR
+
       - name: Push new screenshots if available
         uses: stefanzweifel/git-auto-commit-action@v5
         if: steps.screenshotsrecord.outcome == 'success'
