@@ -13,6 +13,7 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.core.app.ActivityScenario
 import app.sanao1006.roborazziTest.ui.theme.RoborazzitestTheme
+import com.github.takahirom.roborazzi.DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.RoborazziOptions
 import com.github.takahirom.roborazzi.captureRoboImage
@@ -64,7 +65,9 @@ class ExampleUnitTest {
         }
 
         composeTestRule.onNode(hasText("Hello Android!"))
-            .captureRoboImage()
-
+            .captureRoboImage(outputPath("test"))
     }
+
+
+    private fun outputPath(name: String) = "$DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH/$name.png"
 }
