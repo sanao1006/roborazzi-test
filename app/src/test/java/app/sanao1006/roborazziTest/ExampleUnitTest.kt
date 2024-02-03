@@ -1,5 +1,6 @@
 package app.sanao1006.roborazziTest
 
+import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.core.app.ActivityScenario
@@ -30,7 +31,7 @@ class ExampleUnitTest {
         ActivityScenario.launch(MainActivity::class.java)
 
 
-        composeTestRule.onRoot()
+        composeTestRule.onAllNodes(isRoot())[1]
             .captureRoboImage("build/compose.png")
     }
 }
