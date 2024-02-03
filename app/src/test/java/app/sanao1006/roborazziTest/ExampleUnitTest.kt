@@ -1,7 +1,9 @@
 package app.sanao1006.roborazziTest
 
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onRoot
 import androidx.test.core.app.ActivityScenario
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
@@ -24,14 +26,25 @@ import org.robolectric.annotation.GraphicsMode
 @Config(qualifiers = RobolectricDeviceQualifiers.Pixel7Pro)
 class ExampleUnitTest {
     @get:Rule
-    val composeTestRule = createAndroidComposeRule<MainActivity>()
+    val composeTestRule = createComposeRule()
+
+    @Test
+    fun test() {
+        composeTestRule.setContent {
+            Greeting(name = "Android")
+        }
+
+        composeTestRule
+            .onNode(hasText("Hello Android"))
+            .assertExists()
+    }
 
     @Test
     fun captureRoboImageSample() {
         ActivityScenario.launch(MainActivity::class.java)
 
 
-        composeTestRule.onRoot(useUnmergedTree = true)
+        composeTestRule.onNode(hasText("Hello Android!"))
             .captureRoboImage("build/compose.png")
     }
 }
