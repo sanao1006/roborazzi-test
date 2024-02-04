@@ -28,15 +28,7 @@ class ExampleUnitTest {
 
     @Test
     fun captureRoboImageSample() {
-        ActivityScenario.launch(MainActivity::class.java)
-
-        composeTestRule.setContent {
-            RoborazzitestTheme {
-                Greeting("Android")
-            }
-        }
-
-        composeTestRule.onNode(isRoot())
-            .captureRoboImage("build/compose.png")
+        composeTestRule.onRoot()
+            .captureRoboImage()
     }
 }
