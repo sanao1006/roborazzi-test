@@ -44,6 +44,9 @@ jobs:
         with:
           ref: "${{ github.ref }}"
 
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
         continue-on-error: true
