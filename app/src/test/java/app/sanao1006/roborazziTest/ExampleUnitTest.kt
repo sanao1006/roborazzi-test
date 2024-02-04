@@ -53,7 +53,6 @@ class ExampleUnitTest {
                 roborazziOptions = RoborazziOptions(compareOptions = RoborazziOptions.CompareOptions(changeThreshold = 0f))
             )
     }
-
     private fun outputPath(name: String) = "$DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH/$name.png"
 }
 
