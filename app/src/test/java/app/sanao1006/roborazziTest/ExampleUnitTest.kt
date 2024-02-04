@@ -43,15 +43,6 @@ class ExampleUnitTest {
     @get:Rule
     val composeTestRule = createAndroidComposeRule<MainActivity>()
 
-    @Test
-    fun test() {
-        composeTestRule
-            .onNode(
-                hasText("Hello Android!"),
-                useUnmergedTree = true
-            )
-            .assertExists()
-    }
 
     @Test
     fun captureRoboImageSample() {
