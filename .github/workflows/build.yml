@@ -35,6 +35,9 @@ jobs:
         with:
           ref: 'main'
 
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+
       - name: Record screenshots in main branch
         run: |
           ./gradlew recordRoborazziDebug
@@ -43,9 +46,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: "${{ github.ref }}"
-
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
 
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
