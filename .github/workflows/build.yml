@@ -30,6 +30,10 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Run unit tests
+        if: always()
+        run: ./gradlew testDebugUnitTest
+
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
         continue-on-error: true
@@ -61,9 +65,6 @@ jobs:
           disable_globbing: true
           commit_message: "Updates screenshots"
 
-      - name: Run unit tests
-        if: always()
-        run: ./gradlew testDebugUnitTest
 
       # Upload screenshots to GitHub Actions Artifacts
       - uses: actions/upload-artifact@v3
