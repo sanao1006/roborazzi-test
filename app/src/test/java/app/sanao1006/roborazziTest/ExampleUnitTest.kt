@@ -36,6 +36,7 @@ import org.robolectric.annotation.LooperMode
 @LooperMode(LooperMode.Mode.PAUSED)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 @Config(qualifiers = RobolectricDeviceQualifiers.Pixel7Pro)
+@OptIn(com.github.takahirom.roborazzi.ExperimentalRoborazziApi::class)
 class ExampleUnitTest {
     @get:Rule
     val composeTestRule = createComposeRule()
