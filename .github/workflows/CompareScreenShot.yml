@@ -6,7 +6,10 @@ on:
       - main
   pull_request:
 
-permissions: {}
+permissions:
+  contents: read
+  checks: write
+  id-token: write
 
 jobs:
   compare-screenshot-test:
