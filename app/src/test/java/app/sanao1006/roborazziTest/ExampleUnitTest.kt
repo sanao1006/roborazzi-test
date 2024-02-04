@@ -46,7 +46,7 @@ class ExampleUnitTest {
 
     @Test
     fun captureRoboImageSample() {
-        composeTestRule.onNode(hasTestTag("hello"))
+        composeTestRule.onRoot()
             .captureRoboImage(
                 filePath = outputPath("test"),
                 roborazziOptions = RoborazziOptions(compareOptions = RoborazziOptions.CompareOptions(changeThreshold = 0f))
