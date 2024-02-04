@@ -45,10 +45,6 @@ class ExampleUnitTest {
 
     @Test
     fun test() {
-        composeTestRule.setContent {
-            Greeting(name = "Android")
-        }
-
         composeTestRule
             .onNode(
                 hasText("Hello Android!"),
