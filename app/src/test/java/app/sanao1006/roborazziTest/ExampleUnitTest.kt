@@ -41,7 +41,7 @@ import org.robolectric.annotation.LooperMode
 @OptIn(com.github.takahirom.roborazzi.ExperimentalRoborazziApi::class)
 class ExampleUnitTest {
     @get:Rule
-    val composeTestRule = createComposeRule()
+    val composeTestRule = createAndroidComposeRule<MainActivity>()
 
     @Test
     fun test() {
@@ -59,14 +59,6 @@ class ExampleUnitTest {
 
     @Test
     fun captureRoboImageSample() {
-        composeTestRule.setContent {
-            RoborazzitestTheme {
-                Surface{
-                    Greeting("Android")
-                }
-            }
-        }
-
         composeTestRule.onNode(hasTestTag("hello"))
             .captureRoboImage(
                 filePath = outputPath("test"),
