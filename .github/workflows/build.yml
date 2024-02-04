@@ -42,10 +42,13 @@ jobs:
         run: |
           ./gradlew recordRoborazziDebug
 
-      - name: Checkout main
+      - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: "${{ github.ref }}"
+
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
 
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
