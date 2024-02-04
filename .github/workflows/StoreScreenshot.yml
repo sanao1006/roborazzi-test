@@ -40,6 +40,12 @@ jobs:
           # Use --rerun-tasks to disable cache for test task
           ./gradlew recordRoborazziDebug --stacktrace --rerun-tasks
 
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: cancelled() != true
+        with:
+          report_paths: '**/build/test-results/*/TEST-*.xml'
+
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
