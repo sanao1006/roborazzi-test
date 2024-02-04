@@ -5,7 +5,9 @@ import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.core.app.ActivityScenario
 import androidx.compose.ui.test.onRoot
 import app.sanao1006.roborazziTest.ui.theme.RoborazzitestTheme
+import com.github.takahirom.roborazzi.DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
+import com.github.takahirom.roborazzi.RoborazziOptions
 import com.github.takahirom.roborazzi.captureRoboImage
 import org.junit.Test
 import org.junit.Rule
@@ -30,6 +32,11 @@ class ExampleUnitTest {
     @Test
     fun captureRoboImageSample() {
         composeTestRule.onRoot()
-            .captureRoboImage()
+            .captureRoboImage(
+                filePath = outputPath("test"),
+                roborazziOptions = RoborazziOptions(compareOptions = RoborazziOptions.CompareOptions(changeThreshold = 0f))
+            )
     }
+    
+    private fun outputPath(name: String) = "$DEFAULT_ROBORAZZI_OUTPUT_DIR_PATH/$name.png"
 }
