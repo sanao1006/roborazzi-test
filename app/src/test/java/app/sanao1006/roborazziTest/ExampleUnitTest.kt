@@ -3,6 +3,7 @@ package app.sanao1006.roborazziTest
 import androidx.compose.ui.test.isRoot
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.test.core.app.ActivityScenario
+import androidx.compose.ui.test.onRoot
 import app.sanao1006.roborazziTest.ui.theme.RoborazzitestTheme
 import com.github.takahirom.roborazzi.RobolectricDeviceQualifiers
 import com.github.takahirom.roborazzi.captureRoboImage
