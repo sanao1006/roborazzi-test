@@ -30,6 +30,11 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
+      - name: Record screenshots in main branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          ./gradlew recordRoborazziDebug
+
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
         continue-on-error: true
