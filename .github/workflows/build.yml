@@ -36,12 +36,13 @@ jobs:
           ref: 'main'
 
       - name: Record screenshots in main branch
-        if: github.ref == 'refs/heads/main'
         run: |
           ./gradlew recordRoborazziDebug
 
-      - name: Checkout PR branch
-        run: git checkout ${{ github.ref }}
+      - name: Checkout main
+        uses: actions/checkout@v2
+        with:
+          ref: "${{ github.ref }}"
 
       - name: Run all local screenshot tests (Roborazzi)
         id: screenshotsverify
